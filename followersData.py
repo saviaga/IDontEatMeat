@@ -1,4 +1,5 @@
 import tweepy
+import pickle
 
 robotTweeter={}
 robotTweeter["baselineBot"]={}
@@ -47,4 +48,21 @@ def prepareLoginData(botname="baselineBot"):
     api = tweepy.API(auth)
     return api
 
-    prepareLoginData()
+def getFollowers(api,screen_nameBot="climategames4"):
+	ids = []
+	for page in tweepy.Cursor(api.followers_ids,screen_name= screen_nameBot).pages():
+		ids.extend(page)
+		time.sleep(60)
+	pickle.dump(ids, open("screen_names_"+str(screen_nameBot)+".p", "wb"))
+#save_to_int("array_ids.txt",ids)
+#return ids
+	#https://twitter.com/climategames4
+	#for page in tweepy.Cursor(api.followers_ids, screen_name).pages():
+	#	ids.extend(page)
+	#	time.sleep(60)
+
+	#screen_names = [user.screen_name for user in api.lookup_users(user_ids=ids)]
+	#pickle.dump(screen_names, open("screen_names_"+str(screen_name)+".p", "wb"))
+
+api=prepareLoginData()
+getFollowers(api)
