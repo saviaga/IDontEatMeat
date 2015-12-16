@@ -1,3 +1,5 @@
+import tweepy
+
 robotTweeter={}
 robotTweeter["baselineBot"]={}
 robotTweeter["socialBot"]={}
@@ -30,3 +32,19 @@ robotTweeter["mia"]["CONSUMER_KEY"]='OI0fpK83czqr6iVZxzCmVBfmX'
 robotTweeter["mia"]["CONSUMER_SECRET"]='PxeIB9sJfusyBh1aaSncAyy6M881WkNuoTIa22MpTXMlxoir5n'
 robotTweeter["mia"]["ACCESS_KEY"]='16507835-6CQyfynMhr73uS005HR3UqAaLmCvhwN6a2lCOxG5B'
 robotTweeter["mia"]["ACCESS_SECRET"]='LyhsFBWSvkJHEZVtcwpolRO1b1P7ZmTolUnERcYlZBdJZ'
+
+def prepareLoginData(botname="baselineBot"):
+    print "ALMOST"
+    robot=robotTweeter[botname]
+     
+    CONSUMER_KEY =robot["CONSUMER_KEY"]
+    CONSUMER_SECRET =robot["CONSUMER_SECRET"]#keep the quotes, replace this with your consumer secret key
+    ACCESS_KEY =robot["ACCESS_KEY"]#keep the quotes, replace this with your access token
+    ACCESS_SECRET =robot["ACCESS_SECRET"]#keep the quotes, replace this with your access token secret
+     
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+    api = tweepy.API(auth)
+    return api
+
+    prepareLoginData()
