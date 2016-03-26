@@ -17,14 +17,14 @@ import time
 
 
 #climategames1
-#user1="climategames1"
-#consumer_key1 = "BbgIVypKy3NJi9hGK03ywiFTD"
-#consumer_secret1 = "0bQsTvk5a5u0rMksBdIl6Vh9jMdi27cXTzQfFtzmPnifP6fYXO"
-#access_token1 = "4331388381-DYASi2x8Q5KTRuXPxeQThyhkXece5aEMtuTHiKX"
-#access_token_secret1 = "sGdCmfc02YxA78odDXJUZ7oejNbFoYMwleollgHc415jt"
-#auth1 = tweepy.OAuthHandler(consumer_key1, consumer_secret1)
-#auth1.set_access_token(access_token1, access_token_secret1)
-#api1 = tweepy.API(auth1)
+user1="climategames1"
+consumer_key1 = "BbgIVypKy3NJi9hGK03ywiFTD"
+consumer_secret1 = "0bQsTvk5a5u0rMksBdIl6Vh9jMdi27cXTzQfFtzmPnifP6fYXO"
+access_token1 = "4331388381-DYASi2x8Q5KTRuXPxeQThyhkXece5aEMtuTHiKX"
+access_token_secret1 = "sGdCmfc02YxA78odDXJUZ7oejNbFoYMwleollgHc415jt"
+auth1 = tweepy.OAuthHandler(consumer_key1, consumer_secret1)
+auth1.set_access_token(access_token1, access_token_secret1)
+api1 = tweepy.API(auth1)
 
 climategames1 = retrive_twitter_info.GetTwitterInfo(consumer_key1,consumer_secret1,access_token1,access_token_secret1,user1)
 
@@ -129,17 +129,18 @@ def generate_audience():
     print("bot used",bot_used)
 
     if bot_used == 1:
-            searched_tweets = climategames1.search_and_save_tweets(query,max_tweets)
+            searched_tweets = climategames1.search_and_save_tweets(query,max_tweets,'es')
     #print(searched_tweets)
     elif bot_used == 2:
-            searched_tweets = climategames2.search_and_save_tweets(query,max_tweets)
+            searched_tweets = climategames2.search_and_save_tweets(query,max_tweets,'es')
 
     elif bot_used == 3:
-            searched_tweets = climategames3.search_and_save_tweets(query,max_tweets)
+            searched_tweets = climategames3.search_and_save_tweets(query,max_tweets,'es')
 
 
     follow_users(searched_tweets,bot_used)
 
 
 generate_audience()
+
 
